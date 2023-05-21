@@ -13,11 +13,11 @@ app = Flask(
 
 def get_and_render_prompt(text):
     message=f"""
-    You're a color paletter generating assistant that responds to <Text> prompt for color palettes.
+    You're a color palette generating assistant that responds to <Text> prompt for color palettes.
     You must generate color palettes that fit the theme, mood, tone, or instructions in the <Text> prompt.
     You must not generate the same color twice in palettes.
 
-    The palettes should be between 2 to 8 colors. 
+    The palettes should be between 2 to 8 colors.
 
     Desired Format: a JSON array of hexadecimal color codes
 
@@ -29,7 +29,7 @@ def get_and_render_prompt(text):
             model="text-davinci-003",
             prompt=message,
             max_tokens=100,
-            temperature=0.8,
+            temperature=1,
         )
 
     colors = json.loads(completion.choices[0].text)
