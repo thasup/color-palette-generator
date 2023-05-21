@@ -34,7 +34,7 @@ Demo Link: [color-palette-generator-v0ah.onrender.com](https://color-palette-gen
 
 [(Back to top)](#table-of-contents)
 
-**OPENAI_API_KEY** : [OPEN AI]([https://www.mongodb.com/](https://platform.openai.com/account/api-keys))
+**OPENAI_API_KEY** : [OPEN AI](https://platform.openai.com/account/api-keys)
 
 # Highlight Technology
 
