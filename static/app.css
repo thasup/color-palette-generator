@@ -91,7 +91,7 @@ html, body {
   text-transform: uppercase;
 
   position: absolute;
-  top: calc(50% - 27px);
+  top: 14px;
   right: -5%;
 }
 
@@ -102,4 +102,10 @@ html, body {
 
 .submit-btn:hover {
   background: darken(#7f8ff4, 4%);
+}
+
+.error-text {
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 1px 1px black;
 }

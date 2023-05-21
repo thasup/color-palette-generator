@@ -24,15 +24,16 @@ def get_and_render_prompt(text):
     - Provide a verbal description of the color palette you want.
     - Avoid duplicating colors within the same palette.
     - Keep the palette size between 2 to 8 colors.
+    - Keep strictly response in the desired format.
 
     Example Usage:
     - Instruction: Generate a color palette for a Google brand.
-    - Output: "["#4285f4", "#34a853", "#fbbc05", "#ea4335"], ["Google Blue", "Google Green", "Google Yellow", "Google Red"]"
+    - Output:"["#4285f4", "#34a853", "#fbbc05", "#ea4335"], ["Google Blue", "Google Green", "Google Yellow", "Google Red"]"
 
     - Instruction: Generate a color palette for ocean pastels color palette.
-    - Output: "["#83ADFC", "#53CBED", "#22D9DB", "#14D59C", "#0EC36F", "#2EAC8D", "#2A8FBC"], ["Sky Blue", "Light Blue", "Turquoise", "Mint Green", "Emerald Green", "Teal", "Navy Blue"]"
+    - Output:"["#83ADFC", "#53CBED", "#22D9DB", "#14D59C", "#0EC36F", "#2EAC8D", "#2A8FBC"], ["Sky Blue", "Light Blue", "Turquoise", "Mint Green", "Emerald Green", "Teal", "Navy Blue"]"
 
-    Desired Response JSON Format: "["#color1", "#color2", ...], ["name1", "name2", ...]"
+    Desired Response JSON Format:"["#color1", "#color2", ...], ["name1", "name2", ...]"
 
     Instruction: Generate a color palette for {text}
 
@@ -79,7 +80,6 @@ def prompt_to_palette():
 
     # PRINT RETURN COLORS
 
-    # RETURN LIST OF COLORS
     return {
         "result": result
        }

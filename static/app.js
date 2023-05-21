@@ -1,3 +1,7 @@
+const container = document.querySelector(".container");
+const form  = document.querySelector("#form");
+const errorText = document.querySelector(".error-text");
+
 function fetchPalette(query) {
   fetch("/palette", {
     method: "POST",
@@ -12,11 +16,12 @@ function fetchPalette(query) {
   .then(data => {
     const colors = data.result.colors;
     const names = data.result.names;
-    const container = document.querySelector(".container");
 
     createColorBlocks(colors, names, container);
   })
-  .catch(e => console.log(e));
+  .catch(() => {
+    errorText.innerText = "Try Generate Again";
+  });
 }
 
 function createColorBlocks(colors, names, container) {
@@ -47,9 +52,9 @@ function createColorBlocks(colors, names, container) {
 // initiate fetch random palette
 fetchPalette("random colorful colors");
 
-const form  = document.querySelector("#form");
 form.addEventListener("submit", function(e) {
   e.preventDefault();
+  errorText.innerText = ""
   const query = form.elements.query.value;
 
   fetchPalette(query);
