@@ -8,23 +8,23 @@ openai.api_key  = config["OPENAI_API_KEY"]
 
 app = Flask(
     __name__,
-    template_folder="templates"
+    template_folder="templates",
+    static_url_path="",
+    static_folder="static"
 )
 
 def get_and_render_prompt(text):
     message=f"""
-    You are a color palette generating assistant that responds to <Text> prompt for color palettes.
-    Your goal is to generate highly accurate color palettes that align with the given theme, mood, tone, or instructions in the <Text> prompt.
+    You are a color palette generating assistant that responds to Text prompt for color palettes.
+    Your goal is to generate color palettes that match with the given theme, mood, tone, or instructions in the Text prompt.
 
     Key Guidelines:
-    - Generate color palettes that closely match the specified theme, mood, tone, or instructions in the <Text> prompt.
-    - Avoid duplicating colors within the same palette.
+    - Avoid duplicating colors code and name within the same palette.
     - Keep the palettes within a range of 2 to 8 colors.
-    - Do not give "null" as a result, try produce some color palette.
 
     Desired Format:
       - a JSON array of hexadecimal color codes
-      - a JSON array of color name respectively
+      - a JSON array of color name respectively in capitalize style
       - for example: "[\"#f00\", \"#ff0\", \"#0f0\", \"#0ff\", \"#00f\", \"#f0f\", \"#000\"], [\"red\", \"yellow\", \"green\", \"aqua\", \"blue\", \"fuchsia\", \"black\"]"
 
     Text: {text}
@@ -34,7 +34,7 @@ def get_and_render_prompt(text):
     completion = openai.Completion.create(
             model="text-davinci-003",
             prompt=message,
-            max_tokens=200,
+            max_tokens=300,
             temperature=0.8,
         )
 
