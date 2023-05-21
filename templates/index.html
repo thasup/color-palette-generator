@@ -121,12 +121,7 @@
     <div class="container"></div>
 
     <script>
-      const form  = document.querySelector("#form");
-      form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        const query = form.elements.query.value;
-        console.log("submit event", query);
-
+      function fetchPalette(query) {
         fetch("/palette", {
           method: "POST",
           headers: {
@@ -167,6 +162,18 @@
           }
         })
         .catch(e => console.log(e));
+      }
+
+      // initiate fetch random palette
+      fetchPalette("beautiful colorful palette");
+
+      const form  = document.querySelector("#form");
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const query = form.elements.query.value;
+        console.log("submit event", query);
+
+        fetchPalette(query);
       })
     </script>
   </body>
