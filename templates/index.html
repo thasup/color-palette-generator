@@ -7,6 +7,10 @@
     <title>Color Palette Generator</title>
 
     <style>
+      html, body {
+        margin: 0
+      }
+
       .container {
         background-color: black;
         width: 100%;
@@ -16,11 +20,27 @@
 
       .color {
         height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        cursor: pointer;
+        transition: 0.2s opacity;
+      }
+
+      .color:active {
+        opacity: 0.8;
+      }
+
+      .color span {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 1px 1px black;
       }
     </style>
   </head>
   <body>
-    <div>Hello</div>
     <form id="form">
       <input type="text" name="query">
       <button type="submit">Submit</button>
@@ -69,6 +89,7 @@
             container.appendChild(div);
           }
         })
+        .catch(e => console.log(e));
       })
     </script>
   </body>
