@@ -45,7 +45,7 @@ function createColorBlocks(colors, names, container) {
 }
 
 // initiate fetch random palette
-fetchPalette("colorful colors palette");
+fetchPalette("random colorful colors");
 
 const form  = document.querySelector("#form");
 form.addEventListener("submit", function(e) {

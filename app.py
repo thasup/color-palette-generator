@@ -1,5 +1,6 @@
 import openai
 import json
+import ast
 from dotenv import dotenv_values
 from flask import Flask, render_template, request
 
@@ -15,40 +16,50 @@ app = Flask(
 
 def get_and_render_prompt(text):
     message=f"""
-    You are a color palette generating assistant that responds to Text prompt for color palettes.
-    Your goal is to generate color palettes that match with the given theme, mood, tone, or instructions in the Text prompt.
+    Color Palette Generator
 
-    Key Guidelines:
-    - Avoid duplicating colors code and name within the same palette.
-    - Keep the palettes within a range of 2 to 8 colors.
+    Generate color palettes that match the given theme, mood, or instructions.
 
-    Desired Format:
-      - a JSON array of hexadecimal color codes
-      - a JSON array of color name respectively in capitalize style
-      - for example: "[\"#f00\", \"#ff0\", \"#0f0\", \"#0ff\", \"#00f\", \"#f0f\", \"#000\"], [\"red\", \"yellow\", \"green\", \"aqua\", \"blue\", \"fuchsia\", \"black\"]"
+    Instructions:
+    - Provide a verbal description of the color palette you want.
+    - Avoid duplicating colors within the same palette.
+    - Keep the palette size between 2 to 8 colors.
 
-    Text: {text}
+    Example Usage:
+    - Instruction: Generate a color palette for a Google brand.
+    - Output: "["#4285f4", "#34a853", "#fbbc05", "#ea4335"], ["Google Blue", "Google Green", "Google Yellow", "Google Red"]"
+
+    - Instruction: Generate a color palette for ocean pastels color palette.
+    - Output: "["#83ADFC", "#53CBED", "#22D9DB", "#14D59C", "#0EC36F", "#2EAC8D", "#2A8FBC"], ["Sky Blue", "Light Blue", "Turquoise", "Mint Green", "Emerald Green", "Teal", "Navy Blue"]"
+
+    Desired Response JSON Format: "["#color1", "#color2", ...], ["name1", "name2", ...]"
+
+    Instruction: Generate a color palette for {text}
+
     Result:
     """
 
     completion = openai.Completion.create(
             model="text-davinci-003",
             prompt=message,
-            max_tokens=300,
-            temperature=0.8,
+            max_tokens=500,
+            temperature=1.2,
         )
 
+    # Remove leading and trailing whitespaces from the input string
     result = completion.choices[0].text.strip()
 
-    # Split the result into two parts: colors and names
-    colors, names = result.split("], [")
+    # Adjust the input string to make it valid JSON
+    valid_json_str = "[" + result + "]"
 
-    colors = f"""{colors}]"""
-    names = f"""[{names}"""
 
     try:
-      colors = json.loads(colors)
-      names = json.loads(names)
+      # Parse the valid JSON string into a Python list
+      result_array = json.loads(valid_json_str)
+
+      # Extract the separate lists from the resulting array
+      colors = result_array[0]
+      names = result_array[1]
 
       result_dict = {
           "colors": colors,

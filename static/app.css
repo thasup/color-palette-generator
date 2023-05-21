@@ -35,6 +35,7 @@ html, body {
 
 .color span:last-child {
   text-transform: none;
+  text-align: center;
 }
 
 #form {
