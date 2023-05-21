@@ -25,6 +25,7 @@ def get_and_render_prompt(text):
     - Avoid duplicating colors within the same palette.
     - Keep the palette size between 2 to 8 colors.
     - Keep strictly response in the desired format.
+    - Avoid producing a very dull color palette.
 
     Example Usage:
     - Instruction: Generate a color palette for a Google brand.
@@ -43,8 +44,8 @@ def get_and_render_prompt(text):
     completion = openai.Completion.create(
             model="text-davinci-003",
             prompt=message,
-            max_tokens=500,
-            temperature=1.2,
+            max_tokens=100,
+            temperature=1,
         )
 
     # Remove leading and trailing whitespaces from the input string
@@ -79,7 +80,6 @@ def prompt_to_palette():
     result = get_and_render_prompt(query)
 
     # PRINT RETURN COLORS
-
     return {
         "result": result
        }

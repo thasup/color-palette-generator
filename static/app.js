@@ -20,7 +20,7 @@ function fetchPalette(query) {
     createColorBlocks(colors, names, container);
   })
   .catch(() => {
-    errorText.innerText = "Try Generate Again";
+    errorText.innerText = "Something went wrong, try generate again";
   });
 }
 
