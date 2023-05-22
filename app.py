@@ -77,7 +77,7 @@ def get_and_render_prompt_chat(text):
     messages = [
         {
             "role": "system",
-            "content": "You're Color Palette Generator. You'll generate color palettes that match the given theme, mood, or instructions. You'll avoid duplicating colors within the same palette. You'll keep the palette size between 2 to 8 colors."
+            "content": "You're Color Palette Generator. You'll generate color palettes that match the given theme, mood, or instructions. You'll avoid duplicating colors and names within the same palette. You'll keep the palette size between 2 to 8 colors."
         },
         {
             "role": "user",
@@ -86,14 +86,6 @@ def get_and_render_prompt_chat(text):
         {
             "role": "assistant",
             "content": '["#4285f4", "#34a853", "#fbbc05", "#ea4335"], ["Google Blue", "Google Green", "Google Yellow", "Google Red"]'
-        },
-        {
-            "role": "user",
-            "content": "Generate a color palette for ocean pastels color palette."
-        },
-        {
-            "role": "assistant",
-            "content": '["#83ADFC", "#53CBED", "#22D9DB", "#14D59C", "#0EC36F", "#2EAC8D", "#2A8FBC"], ["Sky Blue", "Light Blue", "Turquoise", "Mint Green", "Emerald Green", "Teal", "Navy Blue"]'
         },
         {
             "role": "user",
