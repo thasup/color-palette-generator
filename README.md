@@ -1,9 +1,9 @@
 <!-- Add banner here -->
 
-![Project Preview](https://res.cloudinary.com/thasup/image/upload/v1684699304/portfolio/projects/Screenshot_2566-05-22_at_03.01.31_vwsef1.png)
+![Project Preview](color-palette-generator-gif.gif)
 
 # Color Palette Generator
-A visual color palette search engine with GPT-3 API
+A visual color palette search engine with GPT-3.5 API
 
 # Table of contents
 
@@ -42,5 +42,4 @@ Demo Link: [color-palette-generator-v0ah.onrender.com](https://color-palette-gen
 
 - Python
 - Flask
-- OpenAI API
-- chatGPT
+- chatGPT API
