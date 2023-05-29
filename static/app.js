@@ -14,35 +14,34 @@ function fetchPalette(query) {
   })
   .then((response => response.json()))
   .then(data => {
-    const colors = data.result.colors;
-    const names = data.result.names;
+    const colors = data.result;
 
-    createColorBlocks(colors, names, container);
+    createColorBlocks(colors, container);
   })
   .catch(() => {
     errorText.innerText = "Something went wrong, try generate again";
   });
 }
 
-function createColorBlocks(colors, names, container) {
+function createColorBlocks(colors, container) {
   container.innerHTML = "";
-    for (let i = 0; i < colors.length; i++) {
+    for (color of colors) {
       const div = document.createElement("div");
 
       div.classList.add("color");
-      div.style.backgroundColor = colors[i];
+      div.style.backgroundColor = color.code;
       div.style.width = `calc(100%/${colors.length})`;
 
       div.addEventListener("click", function() {
-        navigator.clipboard.writeText(colors[i]);
+        navigator.clipboard.writeText(color.code);
       })
 
       const spanColor = document.createElement("span");
-      spanColor.innerText = colors[i];
+      spanColor.innerText = color.code;
       div.appendChild(spanColor);
 
       const spanName = document.createElement("span");
-      spanName.innerText = names[i];
+      spanName.innerText = color.name;
       div.appendChild(spanName);
 
       container.appendChild(div);
