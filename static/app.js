@@ -25,7 +25,7 @@ function fetchPalette(query) {
 
 function createColorBlocks(colors, container) {
   container.innerHTML = "";
-    for (color of colors) {
+    for (const color of colors) {
       const div = document.createElement("div");
 
       div.classList.add("color");
