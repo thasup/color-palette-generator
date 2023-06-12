@@ -9,7 +9,7 @@ function fetchPalette(query) {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     body: new URLSearchParams({
-      query: query
+      query
     })
   })
   .then((response => response.json()))
