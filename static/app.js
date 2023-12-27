@@ -2,7 +2,6 @@ const container = document.querySelector(".container");
 const form  = document.querySelector("#form");
 const generateBtn  = document.querySelector("#generate-btn");
 const generatingBtn  = document.querySelector("#generating-btn");
-const errorText = document.querySelector(".error-text");
 
 const successToast = document.getElementById('successToast')
 const errorToast = document.getElementById('errorToast')
@@ -36,7 +35,6 @@ function fetchPalette(query) {
   })
   .catch(() => {
     errorToastBootstrap.show();
-    errorText.innerText = "Something went wrong, try generate again";
     generateBtn.classList.toggle("hidden");
     generatingBtn.classList.toggle("hidden");
   });
@@ -85,7 +83,6 @@ if (window) {
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  errorText.innerText = ""
   const query = form.elements.query.value;
 
   fetchPalette(query);

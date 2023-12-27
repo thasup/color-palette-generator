@@ -150,14 +150,14 @@ def get_and_render_prompt_chat(text):
     ]
 
     completion = openai.ChatCompletion.create(
-        #   model="gpt-3.5-turbo",
-          model="gpt-4",
-          messages=messages2,
-          max_tokens=500,
-          temperature=1,
-          top_p=0.5,
-          frequency_penalty=0,
-          presence_penalty=0
+        # model="gpt-3.5-turbo",
+        model="gpt-4",
+        messages=messages2,
+        max_tokens=500,
+        temperature=1,
+        top_p=0.5,
+        frequency_penalty=0,
+        presence_penalty=0
       )
 
     # Remove leading and trailing whitespaces from the input string
